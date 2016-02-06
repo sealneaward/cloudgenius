@@ -4,4 +4,3 @@ matplotlib
 httplib2
 textblob
 pytagcloud
-pygame
