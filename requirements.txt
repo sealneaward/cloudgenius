@@ -1,3 +1,7 @@
-requests
-httpbin
-gunicorn
+BeautifulSoup
+Flask
+matplotlib
+httplib2
+textblob
+pytagcloud
+pygame
