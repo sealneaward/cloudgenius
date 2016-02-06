@@ -3,3 +3,4 @@ Flask
 httplib2
 textblob
 pytagcloud
+matplotlib
