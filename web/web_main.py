@@ -24,4 +24,4 @@ def analyze():
     return render_template("analysis.html", polarity=polarity_url, wordmap=wordmap_url)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
