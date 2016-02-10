@@ -1,11 +1,10 @@
 import pandas
 from textblob import TextBlob
 import matplotlib.pyplot as plt
-from pytagcloud import create_tag_image, make_tags
-from pytagcloud.lang.counter import get_tag_counts
+from wordcloud import WordCloud
 from sqlalchemy import create_engine
 
-engine = create_engine('postgresql://root:root@localhost:5432/lyrics')
+engine = create_engine('postgresql://root:root@0.0.0.0:5432/lyrics')
 
 # funtion will analyze polarity (positive / negative) behind the passed verse and create a picture of the
 def get_sentiment_analysis(text, url_name):
@@ -30,8 +29,11 @@ def get_sentiment_analysis(text, url_name):
 
 # function will create a word map for a blob of text
 def get_wordmap(text, url_name):
-    tags = make_tags(get_tag_counts(text), maxsize=120)
+    # Generate a word cloud image
+    wordcloud = WordCloud(max_font_size=40, relative_scaling=.5).generate(text)
+    plt.figure()
+    plt.imshow(wordcloud)
+    plt.axis("off")
     url_name = 'analysis_img/wordmap/' + str(url_name)+'.png'
-    create_tag_image(tags, 'static/'+url_name, size=(1300, 1100), fontname='Lobster')
+    plt.savefig('static/'+url_name)
     return url_name
-
